@@ -1,0 +1,19 @@
+.container_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #4f4f4f;
+  color: #fff;
+  height: 10vh;
+}
+
+.container_footer span {
+  font-size: 20px;
+}
+
+@media (max-width: 400px) {
+  .container_footer span{
+    font-size:1rem
+  }
+}

@@ -1,0 +1,53 @@
+.acoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.acoes svg {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.acoes svg:hover {
+  transform: scale(1.2);
+}
+
+.riscado {
+  text-decoration: line-through;
+  color: #999;
+  opacity: 0.7;
+}
+
+.iconeResponsivo {
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+}
+
+.desabilitado {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .iconeResponsivo {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 400px) {
+  .acoes {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    justify-content: center;
+  }
+  .iconeResponsivo {
+    width: 18px;
+    height: 18px;
+  }
+}

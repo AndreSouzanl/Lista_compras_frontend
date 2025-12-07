@@ -1,0 +1,19 @@
+.container_header {
+  background-color: #4f4f4f;
+  color: #fff;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  }
+.container_header h1 {
+  font-size: 2rem;
+}
+
+@media (max-width: 400px) {
+  .container_header h1{
+    font-size: 1rem
+  }
+}
+
