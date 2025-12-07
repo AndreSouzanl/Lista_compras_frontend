@@ -29,6 +29,7 @@ Next.js
 “Muitas pessoas ainda utilizam papel e caneta para organizar suas compras. Com o avanço dos meus estudos em React, decidi criar uma versão moderna da lista de compras que já usava em HTML, CSS e JavaScript puro. Essa ferramenta me ajudou muito em casa, evitando compras desnecessárias e permitindo economia. Espero que ajude outras pessoas também!”
 
 💡 Próximos Passos
+ 
  ✔ Integração com banco de dados (integrado com Mysql)
  
  Autenticação de usuários
