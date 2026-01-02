@@ -181,6 +181,12 @@ export default function Home() {
 
       setProdutos(produtosAtualizados);
 
+      // Mostra mensagem de sucesso vinda do backend
+      setMensagem({
+        texto:"Produto editado com sucesso!",
+        tipo: "sucesso",
+      });
+
       // Limpa estado de edição
       setEditando(false);
       setProdutoEditandoId(null);
@@ -233,7 +239,7 @@ export default function Home() {
 
   return (
     <div className={estilos.containerPrincipal}>
-      <Header titulo="Lista de Compras Mensal" />
+      <Header titulo="Lista de compras do mensal" />
 
       <Mensagem mensagem={mensagem} />
 
