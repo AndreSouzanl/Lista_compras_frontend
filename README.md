@@ -32,7 +32,7 @@ Next.js
  
  ✔ Integração com banco de dados (integrado com Mysql)
  
- Autenticação de usuários
+ ✔ Autenticação de usuários
 
  Sincronização entre dispositivos
 
