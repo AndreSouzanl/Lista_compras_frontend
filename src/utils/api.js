@@ -1,10 +1,22 @@
 import axios from "axios";
 
+// Cria instância da API
 export const api = axios.create({
   baseURL: "http://localhost:9000", 
-  headers:{
+  headers: {
     'Content-Type': 'application/json',
   }
+});
+
+// Adiciona interceptor para sempre enviar token se existir
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token"); // pega token do login
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 export const produtoService = {
@@ -16,4 +28,3 @@ export const produtoService = {
 
   remover: (id) => api.delete(`/produtos/${id}`)
 };
-

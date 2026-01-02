@@ -1,10 +1,23 @@
+"use client";
+
 import estilos from "./Header.module.css";
-export default function Header(props) {
+import { useAuth } from "@/context/AuthContext";
+
+export default function Header({ titulo }) {
+  const { usuario, logout } = useAuth();
+
   return (
     <header className={estilos.container_header}>
-      <div>
-        <h1>{props.titulo}</h1>
-      </div>
+      <h1>{titulo}</h1>
+
+      {usuario && (
+        <div className={estilos.usuario}>
+          <span>Olá, {usuario.nome}</span>
+          <button onClick={logout} className={estilos.btnSair}>
+            Sair
+          </button>
+        </div>
+      )}
     </header>
   );
 }
