@@ -44,7 +44,7 @@
 /* Label */
 .inputGroup label {
   display: block;
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin-bottom: 0.4rem;
   color: #cfcfcf;
 }
@@ -119,3 +119,48 @@
 .success {
   color: #4caf50;
 }
+
+.link {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #fff; /* azul moderno */
+  text-decoration: none;
+  transition: 0.2s;
+  font-size: 1rem;
+  transition: color 0.3s;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5d8bff, #1e3c72);
+  padding: 0.9rem;
+  width:100%;
+}
+.link:hover {
+  color: #fff;
+  background-color: #fff;
+  border: 3px solid #1d4ed8;
+}
+
+.registerLink {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.showPasswordBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+
+

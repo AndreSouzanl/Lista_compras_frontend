@@ -1,47 +1,55 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./page.module.css";
-import { authService } from "@/utils/authService";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import styles from "../login/page.module.css";
+import { usuarioService } from "@/utils/api";
 import Link from "next/link";
 
-export default function LoginPage() {
-  const { login } = useAuth();
-  const router = useRouter();
+export default function RegisterPage() {
+  // cria as variáveis de estado para os campos do formulário
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState(null);
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
-  async function handleLogin(e) {
+  //função para tratar o envio do formulário
+  async function handleRegister(e) {
     e.preventDefault();
-
-    if (!email || !senha) {
+    //valida se todos os campos estão preenchidos
+    if (!nome || !email || !senha) {
       setMensagem({ texto: "Preencha todos os campos", tipo: "erro" });
       return;
     }
-
+    //tenta registrar o usuário
     try {
-      const response = await authService.login(email, senha);
+      await usuarioService.registrar({ nome, email, senha });
 
-      login(response.data.usuario, response.data.token);
+      setMensagem({
+        texto: "Cadastro realizado com sucesso!",
+        tipo: "sucesso",
+      });
 
-      setMensagem({ texto: "Login realizado com sucesso!", tipo: "sucesso" });
-
-      setTimeout(() => {
-        router.push("/");
-      }, 1000);
+      setNome("");
+      setEmail("");
+      setSenha("");
     } catch (error) {
-      setMensagem({ texto: "Email ou senha inválidos", tipo: "erro" });
+      setMensagem({
+        texto: error.response?.data?.mensagem || "Erro ao cadastrar usuário",
+        tipo: "erro",
+      });
     }
   }
 
   return (
     <div className={styles.container}>
-      <form className={styles.card} onSubmit={handleLogin}>
-        <h1 className={styles.title}>Login</h1>
+      <form className={styles.card} onSubmit={handleRegister}>
+        <h1 className={styles.title}>Cadastro seu usuário</h1>
+
+        <div className={styles.inputGroup}>
+          <label>Nome</label>
+          <input value={nome} onChange={(e) => setNome(e.target.value)} />
+        </div>
 
         <div className={styles.inputGroup}>
           <label>Email</label>
@@ -49,7 +57,6 @@ export default function LoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="seu@email.com"
           />
         </div>
 
@@ -74,12 +81,10 @@ export default function LoginPage() {
         <button className={styles.button} type="submit">
           Cadastrar
         </button>
+
         <div className={styles.registerLink}>
-          <Link className={styles.link} href="/register">
-            Não tem conta ? Cadastre
-          </Link>
-          <Link className={styles.link} href="/forgot-password">
-            Esqueceu a senha ?
+          <Link className={styles.link} href="/login">
+            voltar ao login
           </Link>
         </div>
 

@@ -28,3 +28,11 @@ export const produtoService = {
 
   remover: (id) => api.delete(`/produtos/${id}`)
 };
+
+export const usuarioService = {
+  registrar: (dados) => api.post("/usuarios", dados),
+  
+  recuperarSenha: (email) => api.post("/usuarios/forgot-password", { email }),
+  
+  alterarSenha: (token, novaSenha) => api.post("/usuarios/reset-password", { token, novaSenha })
+};
