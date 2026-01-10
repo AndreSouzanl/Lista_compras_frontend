@@ -15,6 +15,7 @@ export default function ResetPasswordPage() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [mensagem, setMensagem] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -68,27 +69,50 @@ export default function ResetPasswordPage() {
 
         <div className={styles.inputGroup}>
           <label>Nova senha</label>
-          <input
-            type="password"
-            placeholder="Nova senha"
-            value={novaSenha}
-            onChange={(e) => setNovaSenha(e.target.value)}
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type= {mostrarSenha ? "text" : "password"}
+              placeholder="Nova senha"
+              value={novaSenha}
+              onChange={(e) => setNovaSenha(e.target.value)}
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setMostrarSenha(!mostrarSenha)}
+            >
+              {mostrarSenha ? "🙈" : "👁️"}
+            </button>
+          </div>
         </div>
 
         <div className={styles.inputGroup}>
           <label>Confirmar senha</label>
-          <input
-            type="password"
-            placeholder="Confirmar senha"
-            value={confirmarSenha}
-            onChange={(e) => setConfirmarSenha(e.target.value)}
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type={mostrarSenha ? "text": "password"}
+              placeholder="Confirmar senha"
+              value={confirmarSenha}
+              onChange={(e) => setConfirmarSenha(e.target.value)}
+            />
+            <button
+              type="button"
+              className={styles.showPasswordBtn}
+              onClick={() => setMostrarSenha(!mostrarSenha)}
+            >
+              {mostrarSenha ? "🙈" : "👁️"}
+            </button>
+          </div>
         </div>
 
-        <button className={styles.button} type="submit" disabled={loading || !token}>
+        <button
+          className={styles.button}
+          type="submit"
+          disabled={loading || !token}
+        >
           {loading ? "Salvando..." : "Alterar senha"}
         </button>
+        
 
         {mensagem && (
           <p

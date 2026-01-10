@@ -4,9 +4,10 @@ import { useState } from "react";
 import styles from "../login/page.module.css";
 import { usuarioService } from "@/utils/api";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 export default function RegisterPage() {
   // cria as variáveis de estado para os campos do formulário
+  const router = useRouter()
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -15,6 +16,7 @@ export default function RegisterPage() {
 
   //função para tratar o envio do formulário
   async function handleRegister(e) {
+    
     e.preventDefault();
     //valida se todos os campos estão preenchidos
     if (!nome || !email || !senha) {
@@ -23,16 +25,26 @@ export default function RegisterPage() {
     }
     //tenta registrar o usuário
     try {
-      await usuarioService.registrar({ nome, email, senha });
+      await usuarioService.registrar({
+        nome,
+        email: email.toLocaleLowerCase(),
+        senha,
+      });
 
       setMensagem({
         texto: "Cadastro realizado com sucesso!",
         tipo: "sucesso",
       });
-
+      
       setNome("");
       setEmail("");
       setSenha("");
+
+      // 🔁 redireciona para login após 1.5s
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
+
     } catch (error) {
       setMensagem({
         texto: error.response?.data?.mensagem || "Erro ao cadastrar usuário",

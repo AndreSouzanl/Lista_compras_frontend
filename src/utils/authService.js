@@ -1,5 +1,5 @@
 import { api } from "./api";
 
 export const authService = {
-  login: (email, senha) => api.post("/login", { email, senha }),
-}
+  login: (dados) => api.post("/login", dados),
+};

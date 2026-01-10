@@ -24,7 +24,11 @@ export default function LoginPage() {
     }
 
     try {
-      const response = await authService.login(email, senha);
+      const response = await authService.login({
+  email,
+  senha,
+});
+
 
       login(response.data.usuario, response.data.token);
 
@@ -57,7 +61,7 @@ export default function LoginPage() {
           <label>Senha</label>
           <div className={styles.passwordWrapper}>
             <input
-              type={mostrarSenha ? "text" : "password"}
+             type={mostrarSenha ? "text" : "password"}
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               placeholder="••••••••"
@@ -67,12 +71,12 @@ export default function LoginPage() {
               className={styles.showPasswordBtn}
               onClick={() => setMostrarSenha(!mostrarSenha)}
             >
-              {mostrarSenha ? "🙈" : "👁️"}
+              {mostrarSenha ? "🙈" : "👁️"} 
             </button>
           </div>
         </div>
         <button className={styles.button} type="submit">
-          Cadastrar
+          Entrar
         </button>
         <div className={styles.registerLink}>
           <Link className={styles.link} href="/register">
