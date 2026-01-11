@@ -22,8 +22,6 @@ export default function Home() {
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [editando, setEditando] = useState(false);
   const [mensagem, setMensagem] = useState({ texto: "", tipo: "" });
-  const [numeroWhatsApp, setNumeroWhatsApp] = useState("");
-  const [mostrarCampoNumero, setMostrarCampoNumero] = useState(false);
   const [produtoEditandoId, setProdutoEditandoId] = useState(null);
 
   // Paginação
@@ -183,7 +181,7 @@ export default function Home() {
 
       // Mostra mensagem de sucesso vinda do backend
       setMensagem({
-        texto:"Produto editado com sucesso!",
+        texto: "Produto editado com sucesso!",
         tipo: "sucesso",
       });
 
@@ -226,6 +224,10 @@ export default function Home() {
         texto: `Falha ao deletar produto "${produto.nome}"!`,
         tipo: "erro",
       });
+      // Remove a mensagem após 3 segundos
+      setTimeout(() => {
+        setMensagem(null);
+      }, 3000);
     }
   }
 
@@ -339,7 +341,10 @@ export default function Home() {
           </button>
         </div>
       </main>
-      <Footer subtitulo="&copy;Desenvolvido por: DevSouza Julho 2025 atualizado em: 01 Janeiro 2026" />
+      <Footer
+        subtitulo="&copy; Julho 2025 - Janeiro 2026"
+        descricao="Desenvolvido por: DevSouza"
+      />
     </div>
   );
 }

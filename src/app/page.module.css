@@ -4,6 +4,12 @@
   min-height: 100vh;
   flex-direction: column;
   background-color: #363636;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+    
 }
 
 .containerPrincipal main {
@@ -37,7 +43,6 @@
   color: #fff;
   font-size: 20px;
   width: 100%;
-  
 }
 
 .input:focus {
@@ -74,11 +79,10 @@
 }
 
 .tabela {
-  width: 100%;
   border-collapse: collapse;
   background-color: rgb(43, 43, 44);
   color: white;
-  max-width: 1000px;
+  min-width: 1000px;
   margin: 0 auto;
 }
 
@@ -93,6 +97,7 @@
 .tabela_th {
   text-align: center !important;
 }
+
 .paginacao {
   display: flex;
   justify-content: center;
@@ -119,6 +124,7 @@
   color: white;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
 }
+
 @media (max-width: 768px) {
   .container_input {
     padding: 10px;
@@ -144,7 +150,7 @@
 
   .tabela th,
   .tabela td {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 6px;
   }
 
@@ -155,7 +161,7 @@
 }
 @media (max-width: 400px) {
   .tabela {
-    width: 250px; /* largura mínima da tabela para forçar scroll */
+    min-width: 5px; /* força scroll horizontal */
   }
 
   .tabela th,
@@ -183,3 +189,4 @@
     gap: 9px;
   }
 }
+
