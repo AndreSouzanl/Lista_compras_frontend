@@ -159,3 +159,17 @@
   cursor: pointer;
   font-size: 1.2rem;
 }
+
+@media (max-width: 768px) {
+  .card {
+    background: none;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+    padding: 1rem; /* opcional: reduzir padding */
+  }
+  .registerLink{
+    flex-direction: column;
+    gap: 0.2rem
+  }
+}

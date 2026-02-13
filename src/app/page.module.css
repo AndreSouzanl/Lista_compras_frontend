@@ -1,6 +1,7 @@
 .containerPrincipal {
   width: 100%;
   display: flex;
+
   min-height: 100vh;
   flex-direction: column;
   background-color: #363636;
@@ -9,7 +10,8 @@
 
 .container {
   width: 100%;
-    
+  overflow-x: auto; /* ESSENCIAL */
+  scrollbar-width: thin; /* Firefox */
 }
 
 .containerPrincipal main {
@@ -82,18 +84,20 @@
   border-collapse: collapse;
   background-color: rgb(43, 43, 44);
   color: white;
-  min-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  min-width: 600px; /* menor valor para manter estrutura */
 }
 
 .tabela th,
 .tabela td {
   border: 1px solid #444;
-  padding: 10px 10px; /* Aumentando o espaçamento para melhor visualização */
+  padding: 10px;
   text-align: left;
   font-size: 1.4rem;
-  white-space: nowrap; /* Impede quebra de linha nas células */
+  white-space: normal;
+  word-break: break-word;
 }
+
 .tabela_th {
   text-align: center !important;
 }
@@ -125,6 +129,13 @@
   font-size: clamp(1rem, 2.5vw, 1.4rem);
 }
 
+@media (min-width: 1968px) {
+  .container {
+    width: 47%;
+    margin: 0 auto; /* centraliza */
+  }
+}
+
 @media (max-width: 768px) {
   .container_input {
     padding: 10px;
@@ -140,12 +151,7 @@
   }
 
   .tabela {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: rgb(43, 43, 44);
-    color: white;
-    max-width: 768px;
-    margin: 0 auto;
+    min-width: 500px;
   }
 
   .tabela th,
@@ -161,7 +167,7 @@
 }
 @media (max-width: 400px) {
   .tabela {
-    min-width: 5px; /* força scroll horizontal */
+    min-width: 5px;
   }
 
   .tabela th,
@@ -189,4 +195,3 @@
     gap: 9px;
   }
 }
-
