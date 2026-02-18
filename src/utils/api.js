@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Cria instância da API
 export const api = axios.create({
-  baseURL: "http://localhost:9000", 
+  baseURL: "https://api-produtos-8p05.onrender.com/", 
   headers: {
     'Content-Type': 'application/json',
   }
