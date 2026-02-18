@@ -10,9 +10,11 @@ export const api = axios.create({
 
 // Adiciona interceptor para sempre enviar token se existir
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token"); // pega token do login
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
   return config;
 }, (error) => {
