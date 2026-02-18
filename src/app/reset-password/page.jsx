@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styles from "../login/page.module.css";
 import { usuarioService } from "@/utils/api";
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -71,7 +71,7 @@ export default function ResetPasswordPage() {
           <label>Nova senha</label>
           <div className={styles.passwordWrapper}>
             <input
-              type= {mostrarSenha ? "text" : "password"}
+              type={mostrarSenha ? "text" : "password"}
               placeholder="Nova senha"
               value={novaSenha}
               onChange={(e) => setNovaSenha(e.target.value)}
@@ -90,7 +90,7 @@ export default function ResetPasswordPage() {
           <label>Confirmar senha</label>
           <div className={styles.passwordWrapper}>
             <input
-              type={mostrarSenha ? "text": "password"}
+              type={mostrarSenha ? "text" : "password"}
               placeholder="Confirmar senha"
               value={confirmarSenha}
               onChange={(e) => setConfirmarSenha(e.target.value)}
@@ -112,7 +112,6 @@ export default function ResetPasswordPage() {
         >
           {loading ? "Salvando..." : "Alterar senha"}
         </button>
-        
 
         {mensagem && (
           <p
@@ -125,5 +124,13 @@ export default function ResetPasswordPage() {
         )}
       </form>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<p>Carregando...</p>}>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }
