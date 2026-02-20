@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Cria instância da API
 export const api = axios.create({
-  baseURL: "https://api-produtos-8p05.onrender.com/", 
+  baseURL: "https://apiprodutos-production.up.railway.app/", 
   headers: {
     'Content-Type': 'application/json',
   }
